@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Task – Programming Fundamentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+input[type="radio"] { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
+
+label.opt {
+  display:block;
+  font-family:'Lato',sans-serif;
+  font-size:14pt;
+  padding:12px 18px;
+  border:2px solid #d0d0d0;
+  border-radius:6px;
+  background:#ffffff;
+  color:#333333;
+  cursor:pointer;
+  margin-bottom:10px;
+  line-height:1.5;
+  user-select:none;
+  -webkit-user-select:none;
+}
+label.opt:hover { background:#e3f2fd; border-color:#007BA6; }
+
+.fb { display:none; font-family:'Lato',sans-serif; font-size:14pt; line-height:1.65; padding:16px 20px; border-radius:6px; margin-top:14px; }
+.fb-ok  { background:#e8f5e9; color:#1b5e20; border:1px solid #81c784; }
+.fb-bad { background:#ffebee; color:#7f0000; border:1px solid #ef9a9a; }
+
+.reveal { display:none; }
+
+#q1_a:checked ~ .answerbox label.opt,
+#q1_b:checked ~ .answerbox label.opt,
+#q1_c:checked ~ .answerbox label.opt,
+#q1_d:checked ~ .answerbox label.opt { pointer-events:none; cursor:default; }
+
+#q1_a:checked ~ .answerbox label[for="q1_a"] { background:#ffebee; border-color:#C62828; color:#7f0000; }
+#q1_a:checked ~ .answerbox label[for="q1_c"] { background:#e8f5e9; border-color:#388e3c; color:#1b5e20; font-weight:700; }
+#q1_a:checked ~ .answerbox .fb-a { display:block; }
+
+#q1_b:checked ~ .answerbox label[for="q1_b"] { background:#ffebee; border-color:#C62828; color:#7f0000; }
+#q1_b:checked ~ .answerbox label[for="q1_c"] { background:#e8f5e9; border-color:#388e3c; color:#1b5e20; font-weight:700; }
+#q1_b:checked ~ .answerbox .fb-b { display:block; }
+
+#q1_c:checked ~ .answerbox label[for="q1_c"] { background:#e8f5e9; border-color:#388e3c; color:#1b5e20; font-weight:700; }
+#q1_c:checked ~ .answerbox .fb-c { display:block; }
+#q1_c:checked ~ .answerbox .reveal { display:block; }
+
+#q1_d:checked ~ .answerbox label[for="q1_d"] { background:#ffebee; border-color:#C62828; color:#7f0000; }
+#q1_d:checked ~ .answerbox label[for="q1_c"] { background:#e8f5e9; border-color:#388e3c; color:#1b5e20; font-weight:700; }
+#q1_d:checked ~ .answerbox .fb-d { display:block; }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Lato',sans-serif;font-size:14pt;color:#333333;line-height:1.65;">
+
+<div style="max-width:860px;margin:0 auto;padding:0 0 60px;">
+
+  <!-- HEADER -->
+  <div style="background:#007BA6;padding:28px 40px 24px;">
+    <div style="font-family:'Lato',sans-serif;font-size:24pt;font-weight:700;color:#ffffff;margin-bottom:4px;">Share Task</div>
+    <div style="font-family:'Lato',sans-serif;font-size:14pt;color:rgba(255,255,255,0.88);">Programming Fundamentals &nbsp;|&nbsp; Edexcel iGCSE 4CP0 &nbsp;|&nbsp; Year 10</div>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+      <span style="background:rgba(255,255,255,0.2);color:#fff;font-family:'Lato',sans-serif;font-size:11pt;font-weight:700;padding:4px 14px;border-radius:20px;">&#9679; 5 minutes</span>
+      <span style="background:rgba(255,255,255,0.2);color:#fff;font-family:'Lato',sans-serif;font-size:11pt;font-weight:700;padding:4px 14px;border-radius:20px;">&#9679; 1 question</span>
+    </div>
+  </div>
+
+  <!-- INSTRUCTION -->
+  <div style="background:#ffffff;border-bottom:1px solid #d0d0d0;padding:16px 40px;">
+    <p style="font-family:'Lato',sans-serif;font-size:14pt;font-weight:700;font-style:italic;color:#00796B;margin:0;">Read the program below carefully. Select your answer, then discuss your reasoning with a partner before your teacher takes responses from the class.</p>
+  </div>
+
+  <div style="padding:32px 40px 0;">
+
+    <!-- QUESTION CARD -->
+    <div style="background:#ffffff;border:1px solid #d0d0d0;border-radius:8px;padding:24px 28px;margin-bottom:24px;">
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <div style="background:#007BA6;color:#fff;font-family:'Lato',sans-serif;font-size:12pt;font-weight:700;padding:4px 14px;border-radius:20px;">Question</div>
+        <div style="font-family:'Lato',sans-serif;font-size:11pt;color:#666666;">Read the code, then select what will happen</div>
+      </div>
+
+      <p style="font-family:'Lato',sans-serif;font-size:14pt;color:#333333;line-height:1.65;margin:0 0 18px;">A student writes the following Python program:</p>
+
+      <div style="background:#1e1e2e;border-radius:8px;padding:20px 24px;margin-bottom:22px;overflow-x:auto;">
+        <code style="font-family:'Courier New',Courier,monospace;font-size:13pt;line-height:1.8;color:#cdd6f4;white-space:pre;display:block;"><span style="color:#cba6f7;">def</span> <span style="color:#89dceb;">calculate_grade</span>(score)<span style="color:#89b4fa;">:</span>
+    <span style="color:#cba6f7;">if</span> score <span style="color:#89b4fa;">&gt;=</span> <span style="color:#fab387;">70</span><span style="color:#89b4fa;">:</span>
+        grade <span style="color:#89b4fa;">=</span> <span style="color:#a6e3a1;">"A"</span>
+    <span style="color:#cba6f7;">elif</span> score <span style="color:#89b4fa;">&gt;=</span> <span style="color:#fab387;">55</span><span style="color:#89b4fa;">:</span>
+        grade <span style="color:#89b4fa;">=</span> <span style="color:#a6e3a1;">"B"</span>
+    <span style="color:#cba6f7;">else</span><span style="color:#89b4fa;">:</span>
+        grade <span style="color:#89b4fa;">=</span> <span style="color:#a6e3a1;">"C"</span>
+    <span style="color:#cba6f7;">return</span> grade
+
+student_score <span style="color:#89b4fa;">=</span> <span style="color:#89dceb;">input</span>(<span style="color:#a6e3a1;">"Enter score: "</span>)
+result <span style="color:#89b4fa;">=</span> <span style="color:#89dceb;">calculate_grade</span>(student_score)
+<span style="color:#89dceb;">print</span>(<span style="color:#a6e3a1;">"Your grade is: "</span> <span style="color:#89b4fa;">+</span> result)</code>
+      </div>
+
+      <p style="font-family:'Lato',sans-serif;font-size:14pt;font-weight:700;color:#333333;line-height:1.55;margin:0 0 20px;">The student runs the program and types <strong style="color:#007BA6;">80</strong> when prompted. What will happen, and why?</p>
+
+      <!-- Radio inputs -->
+      <input type="radio" id="q1_a" name="q1">
+      <input type="radio" id="q1_b" name="q1">
+      <input type="radio" id="q1_c" name="q1">
+      <input type="radio" id="q1_d" name="q1">
+
+      <div class="answerbox">
+
+        <label for="q1_a" class="opt">
+          <strong style="color:#C62828;">A &nbsp;</strong> It prints <code style="font-family:'Courier New',monospace;background:#f0f0f0;padding:1px 6px;border-radius:3px;">Your grade is: A</code> because 80 is greater than or equal to 70.
+        </label>
+
+        <label for="q1_b" class="opt">
+          <strong style="color:#C62828;">B &nbsp;</strong> It prints <code style="font-family:'Courier New',monospace;background:#f0f0f0;padding:1px 6px;border-radius:3px;">Your grade is: C</code> because the else branch always runs.
+        </label>
+
+        <label for="q1_c" class="opt">
+          <strong style="color:#C62828;">C &nbsp;</strong> It crashes with a <code style="font-family:'Courier New',monospace;background:#f0f0f0;padding:1px 6px;border-radius:3px;">TypeError</code> because <code style="font-family:'Courier New',monospace;background:#f0f0f0;padding:1px 6px;border-radius:3px;">input()</code> returns a string and you cannot compare a string with <code style="font-family:'Courier New',monospace;background:#f0f0f0;padding:1px 6px;border-radius:3px;">&gt;=</code> to an integer.
+        </label>
+
+        <label for="q1_d" class="opt">
+          <strong style="color:#C62828;">D &nbsp;</strong> It prints <code style="font-family:'Courier New',monospace;background:#f0f0f0;padding:1px 6px;border-radius:3px;">Your grade is: B</code> because strings are compared alphabetically.
+        </label>
+
+        <!-- Wrong A -->
+        <div class="fb fb-bad fb-a">
+          <strong style="color:#C62828;">&#10007; Not quite.</strong> This would be the correct output if the program ran without errors — but it will not get that far. Think about what data type <code style="font-family:'Courier New',monospace;">input()</code> always returns. Can you use <code style="font-family:'Courier New',monospace;">&gt;=</code> to compare a string and an integer?
+        </div>
+
+        <!-- Wrong B -->
+        <div class="fb fb-bad fb-b">
+          <strong style="color:#C62828;">&#10007; Not quite.</strong> The else branch does not always run — it only runs when the conditions above are False. But there is a more fundamental problem. What does <code style="font-family:'Courier New',monospace;">input()</code> return? What data type is <code style="font-family:'Courier New',monospace;">student_score</code> when it reaches <code style="font-family:'Courier New',monospace;">calculate_grade()</code>?
+        </div>
+
+        <!-- Correct C -->
+        <div class="fb fb-ok fb-c">
+          <strong style="color:#1b5e20;">&#10003; Correct!</strong> <code style="font-family:'Courier New',monospace;">input()</code> always returns a <strong>string</strong>, so <code style="font-family:'Courier New',monospace;">student_score</code> holds the string <code style="font-family:'Courier New',monospace;">"80"</code>, not the integer <code style="font-family:'Courier New',monospace;">80</code>. When <code style="font-family:'Courier New',monospace;">calculate_grade()</code> tries to evaluate <code style="font-family:'Courier New',monospace;">"80" &gt;= 70</code>, Python cannot compare a string with an integer and raises a <code style="font-family:'Courier New',monospace;">TypeError</code>.
+          <br><br>
+          The fix is a single change on the input line:
+          <div style="background:#1e1e2e;border-radius:6px;padding:14px 18px;margin-top:12px;overflow-x:auto;">
+            <code style="font-family:'Courier New',Courier,monospace;font-size:12pt;line-height:1.7;color:#cdd6f4;white-space:pre;display:block;"><span style="color:#6c7086;font-style:italic;"># Change this:</span>
+student_score <span style="color:#89b4fa;">=</span> <span style="color:#89dceb;">input</span>(<span style="color:#a6e3a1;">"Enter score: "</span>)
+
+<span style="color:#6c7086;font-style:italic;"># To this:</span>
+student_score <span style="color:#89b4fa;">=</span> <span style="color:#89dceb;">int</span>(<span style="color:#89dceb;">input</span>(<span style="color:#a6e3a1;">"Enter score: "</span>))</code>
+          </div>
+        </div>
+
+        <!-- Discussion questions — only shown when correct -->
+        <div class="reveal">
+          <div style="margin-top:20px;background:#e3f2fd;border:1px solid #b3d4e8;border-radius:6px;padding:16px 20px;">
+            <div style="font-family:'Lato',sans-serif;font-size:12pt;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#007BA6;margin-bottom:12px;">&#128172; Discuss with your partner</div>
+            <ul style="font-family:'Lato',sans-serif;font-size:14pt;color:#0d47a1;line-height:1.8;padding-left:1.4em;margin:0;">
+              <li style="margin-bottom:8px;">Which topic from the pre-learning does this error relate to?</li>
+              <li style="margin-bottom:8px;">Can you think of another situation where forgetting to cast <code style="font-family:'Courier New',monospace;">input()</code> would cause a problem?</li>
+              <li>The function uses <code style="font-family:'Courier New',monospace;">return</code> — what would happen if you removed it? What would <code style="font-family:'Courier New',monospace;">result</code> contain?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Wrong D -->
+        <div class="fb fb-bad fb-d">
+          <strong style="color:#C62828;">&#10007; Not quite.</strong> Python does not compare strings and integers using <code style="font-family:'Courier New',monospace;">&gt;=</code> at all — it raises a <code style="font-family:'Courier New',monospace;">TypeError</code> immediately. String comparison rules only apply when both values are strings.
+        </div>
+
+      </div><!-- /answerbox -->
+    </div><!-- /question card -->
+
+    <!-- TOPIC CONNECTIONS -->
+    <div style="background:#ffffff;border:1px solid #d0d0d0;border-radius:8px;padding:20px 28px;">
+      <div style="font-family:'Lato',sans-serif;font-size:12pt;font-weight:700;color:#007BA6;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;">Topics covered in this question</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:13pt;color:#333333;"><div style="min-width:8px;height:8px;border-radius:50%;background:#007BA6;flex-shrink:0;"></div>Input and output</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:13pt;color:#333333;"><div style="min-width:8px;height:8px;border-radius:50%;background:#007BA6;flex-shrink:0;"></div>Basic data types</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:13pt;color:#333333;"><div style="min-width:8px;height:8px;border-radius:50%;background:#007BA6;flex-shrink:0;"></div>Selection</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:13pt;color:#333333;"><div style="min-width:8px;height:8px;border-radius:50%;background:#007BA6;flex-shrink:0;"></div>Functions</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:13pt;color:#333333;"><div style="min-width:8px;height:8px;border-radius:50%;background:#007BA6;flex-shrink:0;"></div>Comparison operators</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
